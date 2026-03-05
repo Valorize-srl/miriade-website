@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miriade — Lead Generation B2B su misura</title>
+  <meta name="description" content="Miriade genera lead qualificati e meeting con decision maker per la tua azienda B2B. Nessun tool da gestire, paghi solo i risultati.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & Base ────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #07070d;
+      --bg-card: #0f0f18;
+      --bg-card-hover: #161625;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --text-primary: #f0f0f5;
+      --text-secondary: #8a8a9a;
+      --text-muted: #5a5a6e;
+      --accent: #ff6b3d;
+      --accent-light: #ff8f66;
+      --accent-glow: rgba(255, 107, 61, 0.15);
+      --teal: #00d4a1;
+      --teal-glow: rgba(0, 212, 161, 0.12);
+      --gradient-accent: linear-gradient(135deg, #ff6b3d, #ff8f66);
+      --gradient-teal: linear-gradient(135deg, #00d4a1, #00e6b0);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ──────────────────────────────────────── */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { position: relative; }
+
+    /* ── Typography ──────────────────────────────────── */
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    /* ── Navbar ──────────────────────────────────────── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      padding: 14px 0;
+      background: rgba(7, 7, 13, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.03em;
+    }
+
+    .logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .btn-nav {
+      background: var(--gradient-accent);
+      color: #fff !important;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-nav:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px var(--accent-glow);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ── Hero ────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -15%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--teal-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero .container { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(255, 107, 61, 0.2);
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent-light);
+      margin-bottom: 32px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 800;
+      margin-bottom: 24px;
+      max-width: 800px;
+    }
+
+    .hero h1 .highlight {
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      background: var(--gradient-accent);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px var(--accent-glow);
+    }
+
+    .btn-primary svg { width: 18px; height: 18px; }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    /* ── Social proof bar ────────────────────────────── */
+    .proof-bar {
+      padding: 48px 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .proof-bar .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .proof-stat {
+      text-align: center;
+    }
+
+    .proof-stat .number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .proof-stat .number .accent { color: var(--accent); }
+    .proof-stat .number .teal { color: var(--teal); }
+
+    .proof-stat .label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .proof-divider {
+      width: 1px;
+      height: 48px;
+      background: var(--border-subtle);
+    }
+
+    /* ── Problema / Soluzione ────────────────────────── */
+    .problem-section {
+      padding: 120px 0;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 20px;
+      max-width: 700px;
+    }
+
+    .section-sub {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin-bottom: 56px;
+      line-height: 1.7;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .problem-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 36px 32px;
+      transition: border-color 0.3s, transform 0.3s, background 0.3s;
+    }
+
+    .problem-card:hover {
+      border-color: rgba(255, 107, 61, 0.15);
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+    }
+
+    .problem-card .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+
+    .problem-card .icon.red {
+      background: rgba(255, 107, 61, 0.1);
+      color: var(--accent);
+    }
+
+    .problem-card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .problem-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ── Come funziona ───────────────────────────────── */
+    .how-section {
+      padding: 120px 0;
+      background: linear-gradient(180deg, var(--bg-primary) 0%, #0b0b14 50%, var(--bg-primary) 100%);
+    }
+
+    .how-section .section-label { color: var(--teal); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 36px 28px;
+      counter-increment: step;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .step:hover {
+      border-color: rgba(0, 212, 161, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .step::before {
+      content: counter(step, decimal-leading-zero);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.04);
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      line-height: 1;
+    }
+
+    .step-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--teal-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--teal);
+      font-size: 1.2rem;
+    }
+
+    .step h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ── Connector line between steps (desktop) */
+    .steps-connector {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: -16px;
+      padding: 0 28px;
+    }
+
+    .connector-segment {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 0;
+    }
+
+    .connector-segment:last-child { display: none; }
+
+    /* ── Differenziatori ─────────────────────────────── */
+    .diff-section {
+      padding: 120px 0;
+    }
+
+    .diff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .diff-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 40px 36px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .diff-card:hover {
+      border-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .diff-card .tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+    }
+
+    .diff-card .tag.teal {
+      background: var(--teal-glow);
+      color: var(--teal);
+    }
+
+    .diff-card .tag.orange {
+      background: var(--accent-glow);
+      color: var(--accent-light);
+    }
+
+    .diff-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .diff-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ── Come NON funziona (confronto) ───────────────── */
+    .compare-section {
+      padding: 100px 0;
+      background: linear-gradient(180deg, var(--bg-primary) 0%, #0b0b14 100%);
+    }
+
+    .compare-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .compare-col {
+      border-radius: 16px;
+      padding: 40px 36px;
+    }
+
+    .compare-col.old {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .compare-col.new {
+      background: linear-gradient(135deg, rgba(0, 212, 161, 0.06), rgba(255, 107, 61, 0.06));
+      border: 1px solid rgba(0, 212, 161, 0.15);
+    }
+
+    .compare-col h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .compare-col.old h3 { color: var(--text-muted); }
+    .compare-col.new h3 { color: var(--teal); }
+
+    .compare-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .compare-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .compare-list li .icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      margin-top: 2px;
+    }
+
+    .compare-col.old .compare-list li .icon {
+      background: rgba(255, 80, 80, 0.1);
+      color: #ff5050;
+    }
+
+    .compare-col.new .compare-list li .icon {
+      background: var(--teal-glow);
+      color: var(--teal);
+    }
+
+    .compare-col.old .compare-list li { color: var(--text-muted); }
+    .compare-col.new .compare-list li { color: var(--text-secondary); }
+
+    /* ── CTA finale ──────────────────────────────────── */
+    .cta-section {
+      padding: 120px 0;
+      text-align: center;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, rgba(255, 107, 61, 0.08), rgba(0, 212, 161, 0.06));
+      border: 1px solid rgba(255, 107, 61, 0.15);
+      border-radius: 24px;
+      padding: 80px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-box h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .cta-box p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    .cta-box .btn-primary {
+      font-size: 1.05rem;
+      padding: 18px 40px;
+      position: relative;
+    }
+
+    /* ── Footer ──────────────────────────────────────── */
+    .footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .footer .logo { font-size: 1.2rem; }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    /* ── Animations ──────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ──────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .steps { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(7, 7, 13, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 24px;
+        border-bottom: 1px solid var(--border-subtle);
+        gap: 20px;
+      }
+
+      .hero { min-height: auto; padding: 140px 0 80px; }
+
+      .problem-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .diff-grid { grid-template-columns: 1fr; }
+      .compare-table { grid-template-columns: 1fr; }
+
+      .proof-bar .container { gap: 32px; }
+      .proof-divider { display: none; }
+      .proof-stat .number { font-size: 1.8rem; }
+
+      .cta-box { padding: 56px 24px; }
+
+      .footer .container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-left { flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; width: 100%; }
+      .hero-actions .btn-primary,
+      .hero-actions .btn-secondary { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navbar ──────────────────────────────────────── -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="logo">miriade<span>.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#problema">Problema</a></li>
+        <li><a href="#come-funziona">Come funziona</a></li>
+        <li><a href="#perche">Perche noi</a></li>
+        <li><a href="#contatti" class="btn-nav">Prenota una call</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
+    </div>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Lead generation B2B gestita</div>
+      <h1 class="fade-up">
+        La tua pipeline,<br>
+        <span class="highlight">il nostro lavoro.</span>
+      </h1>
+      <p class="hero-sub fade-up">
+        Generiamo lead qualificati e meeting con decision maker per la tua azienda.
+        Nessun tool da comprare, nessun SDR da assumere. Paghi solo i risultati.
+      </p>
+      <div class="hero-actions fade-up">
+        <a href="#contatti" class="btn-primary">
+          Prenota una call
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+        </a>
+        <a href="#come-funziona" class="btn-secondary">Scopri come funziona</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Social proof ───────────────────────────────── -->
+  <div class="proof-bar">
+    <div class="container">
+      <div class="proof-stat fade-up">
+        <div class="number"><span class="accent">90</span>%</div>
+        <div class="label">Risposte gestite dall'AI</div>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-stat fade-up">
+        <div class="number"><span class="teal">0</span></div>
+        <div class="label">Tool da gestire</div>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-stat fade-up">
+        <div class="number">100<span class="accent">%</span></div>
+        <div class="label">Pay per result</div>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-stat fade-up">
+        <div class="number"><span class="teal">B2B</span></div>
+        <div class="label">Multicanale: Email + LinkedIn</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Problema ───────────────────────────────────── -->
+  <section class="problem-section" id="problema">
+    <div class="container">
+      <div class="section-label fade-up">Il problema</div>
+      <h2 class="section-title fade-up">Hai un ottimo prodotto.<br>Ma la pipeline non si riempie da sola.</h2>
+      <p class="section-sub fade-up">La maggior parte delle aziende B2B dipende da relazioni personali, passaparola o tool che nessuno ha tempo di gestire.</p>
+      <div class="problem-grid">
+        <div class="problem-card fade-up">
+          <div class="icon red">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+          </div>
+          <h3>Assumere SDR costa troppo</h3>
+          <p>Un sales development rep richiede stipendio, formazione e mesi prima di essere produttivo. E se non funziona, si ricomincia da zero.</p>
+        </div>
+        <div class="problem-card fade-up">
+          <div class="icon red">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+          </div>
+          <h3>Troppi tool, zero risultati</h3>
+          <p>CRM, email tool, enrichment, sequenze LinkedIn: decine di abbonamenti ma nessuno che metta insieme il puzzle per te.</p>
+        </div>
+        <div class="problem-card fade-up">
+          <div class="icon red">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+          </div>
+          <h3>L'outreach non scala</h3>
+          <p>Fare prospecting manuale funziona, ma non scala. E quando smetti, la pipeline si svuota in settimane.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Come funziona ──────────────────────────────── -->
+  <section class="how-section" id="come-funziona">
+    <div class="container">
+      <div class="section-label fade-up">Come funziona</div>
+      <h2 class="section-title fade-up">Da zero a meeting in agenda.<br>In 4 step.</h2>
+      <p class="section-sub fade-up">Non devi fare quasi nulla. Noi ci occupiamo dell'intero processo, dall'identificazione del prospect alla prenotazione del meeting.</p>
+      <div class="steps">
+        <div class="step fade-up">
+          <div class="step-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Identifichiamo il tuo ICP</h3>
+          <p>Definiamo insieme il cliente ideale: settore, dimensione, ruolo decisionale, segnali di acquisto.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83"/></svg>
+          </div>
+          <h3>Costruiamo il database</h3>
+          <p>Prospect reali arricchiti con intent data, dati tecnografici, hiring news e segnali di mercato.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Outreach AI multicanale</h3>
+          <p>Sequenze personalizzate via email e LinkedIn. L'AI gestisce le risposte, classifica il sentiment, genera reply contestuali.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+          </div>
+          <h3>Meeting in agenda</h3>
+          <p>Quando un prospect e qualificato, il sistema propone uno slot e prenota il meeting. Tu ricevi solo la conferma.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Perche Miriade ──────────────────────────────── -->
+  <section class="diff-section" id="perche">
+    <div class="container">
+      <div class="section-label fade-up">Perche Miriade</div>
+      <h2 class="section-title fade-up">Non vendiamo software.<br>Consegniamo risultati.</h2>
+      <p class="section-sub fade-up">Miriade non e un tool. E un servizio gestito end-to-end che combina AI, dati e strategia per riempire la tua pipeline.</p>
+      <div class="diff-grid">
+        <div class="diff-card fade-up">
+          <div class="tag teal">Servizio gestito</div>
+          <h3>Nessun setup, nessun onboarding infinito</h3>
+          <p>Non devi imparare nessun tool. Ci dai il tuo ICP e noi facciamo tutto: infrastruttura, sequenze, gestione risposte, booking.</p>
+        </div>
+        <div class="diff-card fade-up">
+          <div class="tag orange">Pay per result</div>
+          <h3>Paghi solo per lead qualificati o meeting</h3>
+          <p>Niente canoni mensili per software che non usi. Il nostro modello e semplice: paghi per i risultati che ricevi, non per l'accesso a una piattaforma.</p>
+        </div>
+        <div class="diff-card fade-up">
+          <div class="tag teal">AI + Dati</div>
+          <h3>Outreach che sembra umano, scala come una macchina</h3>
+          <p>Ogni messaggio e personalizzato dal nostro AI sulla base del profilo del prospect, del suo contesto e della tua value proposition.</p>
+        </div>
+        <div class="diff-card fade-up">
+          <div class="tag orange">Multicanale</div>
+          <h3>Email + LinkedIn, orchestrati insieme</h3>
+          <p>Non una singola email fredda. Una sequenza coordinata su piu canali che massimizza i tassi di risposta e costruisce relazione.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Confronto ──────────────────────────────────── -->
+  <section class="compare-section">
+    <div class="container">
+      <div class="section-label fade-up" style="text-align:center;">Il confronto</div>
+      <h2 class="section-title fade-up" style="text-align:center; margin-left:auto; margin-right:auto;">Il vecchio modo vs Miriade</h2>
+      <div class="compare-table">
+        <div class="compare-col old fade-up">
+          <h3>
+            <span style="font-size:1.2rem;">&#10005;</span>
+            Il modo tradizionale
+          </h3>
+          <ul class="compare-list">
+            <li><div class="icon">&#10005;</div><span>Assumere SDR: 40-60k/anno + mesi di ramp-up</span></li>
+            <li><div class="icon">&#10005;</div><span>5-10 tool diversi con abbonamenti separati</span></li>
+            <li><div class="icon">&#10005;</div><span>Email generiche con tassi di risposta sotto il 2%</span></li>
+            <li><div class="icon">&#10005;</div><span>Follow-up manuali che si perdono nel caos</span></li>
+            <li><div class="icon">&#10005;</div><span>Pipeline che si svuota quando smetti</span></li>
+          </ul>
+        </div>
+        <div class="compare-col new fade-up">
+          <h3>
+            <span style="font-size:1.2rem;">&#10003;</span>
+            Con Miriade
+          </h3>
+          <ul class="compare-list">
+            <li><div class="icon">&#10003;</div><span>Zero assunzioni, zero costi fissi di personale</span></li>
+            <li><div class="icon">&#10003;</div><span>Un unico servizio che integra tutto</span></li>
+            <li><div class="icon">&#10003;</div><span>Messaggi AI personalizzati per ogni prospect</span></li>
+            <li><div class="icon">&#10003;</div><span>Risposte gestite automaticamente al 90%</span></li>
+            <li><div class="icon">&#10003;</div><span>Pipeline costante, scalabile, prevedibile</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ─────────────────────────────────────────── -->
+  <section class="cta-section" id="contatti">
+    <div class="container">
+      <div class="cta-box fade-up">
+        <h2>Pronto a riempire la tua pipeline?</h2>
+        <p>Prenota una call di 20 minuti. Ti mostriamo come funziona, senza impegno.</p>
+        <a href="mailto:info@miriade.com" class="btn-primary">
+          Parliamone
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ──────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-left">
+        <a href="#" class="logo">miriade<span>.</span></a>
+        <span class="footer-copy">Lead generation B2B gestita</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="mailto:info@miriade.com">Contatti</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ─────────────────────────────────────── -->
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close mobile menu on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Fade-up on scroll (Intersection Observer)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+  </script>
+
+</body>
+</html>

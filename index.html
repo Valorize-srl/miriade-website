@@ -162,7 +162,26 @@
       pointer-events: none;
     }
 
-    .hero .container { position: relative; z-index: 1; }
+    .hero .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero-content { flex: 1; min-width: 0; }
+
+    .hero-visual {
+      flex: 0 0 480px;
+      position: relative;
+    }
+
+    .hero-illustration {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 20px 60px rgba(255, 107, 61, 0.1));
+    }
 
     .hero-badge {
       display: inline-flex;
@@ -712,6 +731,7 @@
 
     /* ── Responsive ──────────────────────────────────── */
     @media (max-width: 1024px) {
+      .hero-visual { flex: 0 0 360px; }
       .steps { grid-template-columns: repeat(2, 1fr); }
     }
 
@@ -734,6 +754,8 @@
       }
 
       .hero { min-height: auto; padding: 140px 0 80px; }
+      .hero .container { flex-direction: column; }
+      .hero-visual { flex: 0 0 auto; max-width: 400px; width: 100%; }
 
       .problem-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; }
@@ -780,21 +802,96 @@
   <!-- ── Hero ────────────────────────────────────────── -->
   <section class="hero">
     <div class="container">
-      <div class="hero-badge">Nuovi clienti per la tua azienda</div>
-      <h1 class="fade-up">
-        Noi troviamo i clienti,<br>
-        <span class="highlight">tu chiudi i contratti.</span>
-      </h1>
-      <p class="hero-sub fade-up">
-        Contattiamo le aziende giuste per te e ti fissiamo appuntamenti con chi decide.
-        Nessun software da comprare, nessuna persona da assumere. Paghi solo i risultati.
-      </p>
-      <div class="hero-actions fade-up">
-        <a href="#contatti" class="btn-primary">
-          Prenota una chiamata
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
-        </a>
-        <a href="#come-funziona" class="btn-secondary">Scopri come funziona</a>
+      <div class="hero-content">
+        <div class="hero-badge">Nuovi clienti per la tua azienda</div>
+        <h1 class="fade-up">
+          Noi troviamo i clienti,<br>
+          <span class="highlight">tu chiudi i contratti.</span>
+        </h1>
+        <p class="hero-sub fade-up">
+          Contattiamo le aziende giuste per te e ti fissiamo appuntamenti con chi decide.
+          Nessun software da comprare, nessuna persona da assumere. Paghi solo i risultati.
+        </p>
+        <div class="hero-actions fade-up">
+          <a href="#contatti" class="btn-primary">
+            Prenota una chiamata
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+          </a>
+          <a href="#come-funziona" class="btn-secondary">Scopri come funziona</a>
+        </div>
+      </div>
+      <div class="hero-visual fade-up">
+        <svg class="hero-illustration" viewBox="0 0 480 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Dashboard background -->
+          <rect x="20" y="20" width="440" height="360" rx="20" fill="#0f0f18" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+          <!-- Top bar -->
+          <rect x="20" y="20" width="440" height="52" rx="20" fill="#131320"/>
+          <rect x="20" y="52" width="440" height="20" fill="#131320"/>
+          <circle cx="52" cy="46" r="6" fill="#ff6b3d" opacity="0.8"/>
+          <circle cx="72" cy="46" r="6" fill="#00d4a1" opacity="0.5"/>
+          <circle cx="92" cy="46" r="6" fill="rgba(255,255,255,0.1)"/>
+          <rect x="300" y="38" width="140" height="16" rx="8" fill="rgba(255,255,255,0.04)"/>
+          <!-- Sidebar -->
+          <rect x="20" y="72" width="120" height="308" fill="#0b0b14" rx="0"/>
+          <rect x="20" y="352" width="120" height="28" rx="20" fill="#0b0b14"/>
+          <rect x="36" y="92" width="88" height="10" rx="5" fill="rgba(255,255,255,0.06)"/>
+          <rect x="36" y="116" width="72" height="10" rx="5" fill="rgba(255,107,61,0.2)"/>
+          <rect x="36" y="140" width="80" height="10" rx="5" fill="rgba(255,255,255,0.06)"/>
+          <rect x="36" y="164" width="64" height="10" rx="5" fill="rgba(255,255,255,0.06)"/>
+          <rect x="36" y="188" width="76" height="10" rx="5" fill="rgba(255,255,255,0.06)"/>
+          <!-- Main content area - inbox style -->
+          <!-- Header -->
+          <text x="164" y="100" fill="rgba(255,255,255,0.5)" font-family="Inter, sans-serif" font-size="11" font-weight="600">APPUNTAMENTI IN ARRIVO</text>
+          <!-- Inbox rows -->
+          <rect x="156" y="114" width="288" height="56" rx="10" fill="rgba(0,212,161,0.06)" stroke="rgba(0,212,161,0.12)" stroke-width="1"/>
+          <circle cx="178" cy="142" r="14" fill="rgba(0,212,161,0.15)"/>
+          <text x="178" y="146" text-anchor="middle" fill="#00d4a1" font-family="Inter" font-size="11" font-weight="600">MR</text>
+          <rect x="200" y="132" width="100" height="9" rx="4" fill="rgba(255,255,255,0.15)"/>
+          <rect x="200" y="147" width="160" height="7" rx="3" fill="rgba(255,255,255,0.06)"/>
+          <rect x="384" y="134" width="48" height="18" rx="9" fill="rgba(0,212,161,0.15)"/>
+          <text x="408" y="146" text-anchor="middle" fill="#00d4a1" font-family="Inter" font-size="8" font-weight="600">NUOVO</text>
+
+          <rect x="156" y="178" width="288" height="56" rx="10" fill="rgba(255,107,61,0.04)" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          <circle cx="178" cy="206" r="14" fill="rgba(255,107,61,0.12)"/>
+          <text x="178" y="210" text-anchor="middle" fill="#ff8f66" font-family="Inter" font-size="11" font-weight="600">LC</text>
+          <rect x="200" y="196" width="120" height="9" rx="4" fill="rgba(255,255,255,0.12)"/>
+          <rect x="200" y="211" width="140" height="7" rx="3" fill="rgba(255,255,255,0.05)"/>
+          <rect x="384" y="198" width="48" height="18" rx="9" fill="rgba(255,107,61,0.12)"/>
+          <text x="408" y="210" text-anchor="middle" fill="#ff8f66" font-family="Inter" font-size="8" font-weight="600">14:30</text>
+
+          <rect x="156" y="242" width="288" height="56" rx="10" fill="rgba(0,212,161,0.04)" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          <circle cx="178" cy="270" r="14" fill="rgba(0,212,161,0.1)"/>
+          <text x="178" y="274" text-anchor="middle" fill="#00d4a1" font-family="Inter" font-size="11" font-weight="600">FA</text>
+          <rect x="200" y="260" width="90" height="9" rx="4" fill="rgba(255,255,255,0.12)"/>
+          <rect x="200" y="275" width="170" height="7" rx="3" fill="rgba(255,255,255,0.05)"/>
+          <rect x="384" y="262" width="48" height="18" rx="9" fill="rgba(0,212,161,0.1)"/>
+          <text x="408" y="274" text-anchor="middle" fill="#00d4a1" font-family="Inter" font-size="8" font-weight="600">DOM</text>
+
+          <!-- Stats bar at bottom -->
+          <rect x="156" y="316" width="288" height="48" rx="12" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          <text x="184" y="336" fill="#ff6b3d" font-family="Space Grotesk, sans-serif" font-size="16" font-weight="700">12</text>
+          <text x="184" y="352" fill="rgba(255,255,255,0.3)" font-family="Inter" font-size="8">Appuntamenti</text>
+          <line x1="240" y1="324" x2="240" y2="356" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <text x="268" y="336" fill="#00d4a1" font-family="Space Grotesk, sans-serif" font-size="16" font-weight="700">89%</text>
+          <text x="268" y="352" fill="rgba(255,255,255,0.3)" font-family="Inter" font-size="8">Tasso risposta</text>
+          <line x1="332" y1="324" x2="332" y2="356" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <text x="360" y="336" fill="rgba(255,255,255,0.5)" font-family="Space Grotesk, sans-serif" font-size="16" font-weight="700">847</text>
+          <text x="360" y="352" fill="rgba(255,255,255,0.3)" font-family="Inter" font-size="8">Contatti</text>
+
+          <!-- Floating notification -->
+          <g filter="url(#notif-shadow)">
+            <rect x="340" y="0" width="140" height="50" rx="12" fill="#161625" stroke="rgba(0,212,161,0.2)" stroke-width="1.5"/>
+            <circle cx="362" cy="25" r="10" fill="rgba(0,212,161,0.15)"/>
+            <path d="M358 25l3 3 5-6" stroke="#00d4a1" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="380" y="21" fill="rgba(255,255,255,0.7)" font-family="Inter" font-size="8" font-weight="600">Nuovo appuntamento</text>
+            <text x="380" y="33" fill="rgba(255,255,255,0.35)" font-family="Inter" font-size="7">Marco R. — 15:00</text>
+          </g>
+          <defs>
+            <filter id="notif-shadow" x="330" y="-10" width="170" height="80">
+              <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(0,212,161,0.15)"/>
+            </filter>
+          </defs>
+        </svg>
       </div>
     </div>
   </section>
@@ -833,21 +930,41 @@
       <div class="problem-grid">
         <div class="problem-card fade-up">
           <div class="icon red">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="10" cy="8" r="4" stroke="#ff6b3d" stroke-width="1.8"/>
+              <path d="M2 22c0-4.4 3.6-8 8-8s8 3.6 8 22" stroke="#ff6b3d" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M20 10l6 6M26 10l-6 6" stroke="#ff6b3d" stroke-width="1.8" stroke-linecap="round"/>
+              <rect x="18" y="18" width="8" height="8" rx="2" fill="rgba(255,107,61,0.15)" stroke="#ff6b3d" stroke-width="1.2"/>
+              <text x="22" y="24.5" text-anchor="middle" fill="#ff6b3d" font-family="Inter" font-size="7" font-weight="700">€</text>
+            </svg>
           </div>
           <h3>Assumere venditori costa troppo</h3>
           <p>Una persona dedicata a cercare nuovi clienti richiede stipendio, formazione e mesi prima di portare risultati. E se non funziona, si ricomincia da zero.</p>
         </div>
         <div class="problem-card fade-up">
           <div class="icon red">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="4" width="8" height="8" rx="2" stroke="#ff6b3d" stroke-width="1.5" opacity="0.5"/>
+              <rect x="18" y="4" width="8" height="8" rx="2" stroke="#ff6b3d" stroke-width="1.5" opacity="0.5"/>
+              <rect x="2" y="16" width="8" height="8" rx="2" stroke="#ff6b3d" stroke-width="1.5" opacity="0.5"/>
+              <rect x="18" y="16" width="8" height="8" rx="2" stroke="#ff6b3d" stroke-width="1.5" opacity="0.5"/>
+              <rect x="10" y="10" width="8" height="8" rx="2" fill="rgba(255,107,61,0.15)" stroke="#ff6b3d" stroke-width="1.5"/>
+              <path d="M12 14h4M14 12v4" stroke="#ff6b3d" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M10 8l-2 2M18 8l2 2M10 18l-2-2M18 18l2-2" stroke="#ff6b3d" stroke-width="1" stroke-linecap="round" stroke-dasharray="2 2" opacity="0.4"/>
+            </svg>
           </div>
           <h3>Troppi strumenti, zero risultati</h3>
           <p>Software per le email, per i contatti, per LinkedIn: decine di abbonamenti ma nessuno che faccia il lavoro al posto tuo.</p>
         </div>
         <div class="problem-card fade-up">
           <div class="icon red">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="7" stroke="#ff6b3d" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.4"/>
+              <circle cx="12" cy="12" r="3" fill="rgba(255,107,61,0.15)" stroke="#ff6b3d" stroke-width="1.5"/>
+              <path d="M18 18l6 6" stroke="#ff6b3d" stroke-width="2" stroke-linecap="round"/>
+              <path d="M4 24l2-5M2 20h4" stroke="#ff6b3d" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+              <circle cx="22" cy="6" r="2" stroke="#ff6b3d" stroke-width="1.2" opacity="0.4"/>
+            </svg>
           </div>
           <h3>Cercare clienti a mano non funziona</h3>
           <p>Contattare potenziali clienti uno a uno richiede tempo e costanza. E quando smetti, le opportunita si esauriscono in poche settimane.</p>
@@ -865,28 +982,54 @@
       <div class="steps">
         <div class="step fade-up">
           <div class="step-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="10" r="4" stroke="#00d4a1" stroke-width="1.8"/>
+              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="#00d4a1" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="12" cy="10" r="1.5" fill="#00d4a1" opacity="0.3"/>
+              <path d="M19 4l2 2-2 2" stroke="#00d4a1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+            </svg>
           </div>
           <h3>Definiamo il tuo cliente ideale</h3>
           <p>Insieme capiamo chi sono le aziende giuste per te: settore, dimensione, chi prende le decisioni e quando e il momento migliore per contattarle.</p>
         </div>
         <div class="step fade-up">
           <div class="step-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="3" stroke="#00d4a1" stroke-width="1.5" opacity="0.5"/>
+              <circle cx="16" cy="8" r="3" stroke="#00d4a1" stroke-width="1.5" opacity="0.5"/>
+              <circle cx="12" cy="16" r="3" stroke="#00d4a1" stroke-width="1.5"/>
+              <circle cx="12" cy="16" r="1.2" fill="#00d4a1" opacity="0.3"/>
+              <path d="M10 9l-1 5M14 9l1 5" stroke="#00d4a1" stroke-width="1" stroke-dasharray="2 2" opacity="0.4"/>
+              <path d="M9 16h-4M15 16h4" stroke="#00d4a1" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+            </svg>
           </div>
           <h3>Troviamo le aziende giuste</h3>
           <p>Creiamo una lista di contatti reali e verificati, selezionati in base al profilo che abbiamo definito insieme e a segnali concreti di interesse.</p>
         </div>
         <div class="step fade-up">
           <div class="step-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="5" width="14" height="10" rx="2" stroke="#00d4a1" stroke-width="1.5"/>
+              <path d="M2 7l7 4 7-4" stroke="#00d4a1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="14" y="3" width="8" height="8" rx="4" fill="rgba(0,212,161,0.15)" stroke="#00d4a1" stroke-width="1.2"/>
+              <path d="M16.5 7l1.2 1.2 2.4-2.4" stroke="#00d4a1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 19l3-4M12 19l-3-4" stroke="#00d4a1" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+              <rect x="4" y="19" width="10" height="2" rx="1" fill="#00d4a1" opacity="0.15"/>
+            </svg>
           </div>
           <h3>Li contattiamo per te</h3>
           <p>Inviamo messaggi personalizzati via email e LinkedIn. La nostra intelligenza artificiale gestisce le risposte e mantiene viva la conversazione.</p>
         </div>
         <div class="step fade-up">
           <div class="step-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="4" width="18" height="18" rx="3" stroke="#00d4a1" stroke-width="1.5"/>
+              <line x1="3" y1="10" x2="21" y2="10" stroke="#00d4a1" stroke-width="1.5"/>
+              <line x1="8" y1="2" x2="8" y2="6" stroke="#00d4a1" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="16" y1="2" x2="16" y2="6" stroke="#00d4a1" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="12" cy="16" r="3.5" fill="rgba(0,212,161,0.15)" stroke="#00d4a1" stroke-width="1.2"/>
+              <path d="M10.5 16l1 1 2.5-2.5" stroke="#00d4a1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
           <h3>Appuntamento in agenda</h3>
           <p>Quando un contatto e interessato, fissiamo direttamente l'appuntamento nel tuo calendario. Tu ricevi solo la conferma.</p>

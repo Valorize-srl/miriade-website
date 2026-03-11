@@ -402,17 +402,23 @@
     }
 
     .partner-logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      opacity: 0.5;
-      transition: opacity 0.3s;
-      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .partner-logo:hover {
-      opacity: 0.8;
+    .partner-logo img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+      filter: grayscale(100%);
+    }
+
+    .partner-logo img:hover {
+      opacity: 1;
+      filter: grayscale(0%);
     }
 
     /* ── Problema / Soluzione ────────────────────────── */
@@ -1168,12 +1174,9 @@
     <div class="container">
       <div class="section-label fade-up">I nostri partner</div>
       <div class="partners-grid fade-up">
-        <span class="partner-logo">Acme Corp</span>
-        <span class="partner-logo">TechFlow</span>
-        <span class="partner-logo">NovaBuild</span>
-        <span class="partner-logo">SkyLine Digital</span>
-        <span class="partner-logo">Vertex AI</span>
-        <span class="partner-logo">CloudBase</span>
+        <span class="partner-logo"><img src="logo eolo.png" alt="Eolo"></span>
+        <span class="partner-logo"><img src="Screenshot 2026-03-11 alle 13.57.59.png" alt="Cleobi"></span>
+        <span class="partner-logo"><img src="pushloop_logo.png" alt="Pushloop"></span>
       </div>
     </div>
   </section>

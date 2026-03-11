@@ -227,11 +227,30 @@
     }
 
     .hero-sub {
-      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
       color: var(--text-secondary);
       max-width: 580px;
       margin-bottom: 48px;
       line-height: 1.7;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hero-sub li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-sub li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
     }
 
     .hero-actions {
@@ -808,10 +827,12 @@
           La nostra AI trova i clienti,<br>
           <span class="highlight">tu chiudi i contratti.</span>
         </h1>
-        <p class="hero-sub fade-up">
-          La nostra intelligenza artificiale contatta le aziende giuste per te e ti fissa appuntamenti con chi decide.
-          Nessun software da comprare, nessuna persona da assumere. Paghi solo i risultati.
-        </p>
+        <ul class="hero-sub fade-up">
+          <li>Contattiamo le aziende giuste per te via email e LinkedIn</li>
+          <li>Ti fissiamo appuntamenti con chi decide</li>
+          <li>Nessun software da comprare, nessuna persona da assumere</li>
+          <li>Paghi solo i risultati</li>
+        </ul>
         <div class="hero-actions fade-up">
           <a href="#contatti" class="btn-primary">
             Prenota una chiamata

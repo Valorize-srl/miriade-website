@@ -346,6 +346,43 @@
       background: var(--border-subtle);
     }
 
+    /* ── Partner ────────────────────────────────────── */
+    .partners-section {
+      padding: 80px 0;
+    }
+
+    .partners-section .section-label {
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .partners-grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .partner-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      opacity: 0.5;
+      transition: opacity 0.3s;
+      letter-spacing: -0.02em;
+    }
+
+    .partner-logo:hover {
+      opacity: 0.8;
+    }
+
     /* ── Problema / Soluzione ────────────────────────── */
     .problem-section {
       padding: 120px 0;
@@ -943,6 +980,21 @@
       </div>
     </div>
   </div>
+
+  <!-- ── Partner ──────────────────────────────────── -->
+  <section class="partners-section">
+    <div class="container">
+      <div class="section-label fade-up">I nostri partner</div>
+      <div class="partners-grid fade-up">
+        <span class="partner-logo">Acme Corp</span>
+        <span class="partner-logo">TechFlow</span>
+        <span class="partner-logo">NovaBuild</span>
+        <span class="partner-logo">SkyLine Digital</span>
+        <span class="partner-logo">Vertex AI</span>
+        <span class="partner-logo">CloudBase</span>
+      </div>
+    </div>
+  </section>
 
   <!-- ── Problema ───────────────────────────────────── -->
   <section class="problem-section" id="problema">

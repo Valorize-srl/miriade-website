@@ -396,15 +396,30 @@
     .partners-grid {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
+      gap: 64px;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    .partners-track {
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      animation: scroll-partners 20s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes scroll-partners {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-100% - 64px)); }
     }
 
     .partner-logo {
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     .partner-logo img {
@@ -1173,9 +1188,16 @@
     <div class="container">
       <div class="section-label fade-up">I nostri partner</div>
       <div class="partners-grid fade-up">
-        <span class="partner-logo"><img src="logo-eolo.png" alt="Eolo"></span>
-        <span class="partner-logo"><img src="logo-cleobi.png" alt="Cleobi"></span>
-        <span class="partner-logo"><img src="pushloop_logo.png" alt="Pushloop"></span>
+        <div class="partners-track">
+          <span class="partner-logo"><img src="logo-eolo.png" alt="Eolo"></span>
+          <span class="partner-logo"><img src="logo-cleobi.png" alt="Cleobi"></span>
+          <span class="partner-logo"><img src="pushloop_logo.png" alt="Pushloop"></span>
+        </div>
+        <div class="partners-track" aria-hidden="true">
+          <span class="partner-logo"><img src="logo-eolo.png" alt="Eolo"></span>
+          <span class="partner-logo"><img src="logo-cleobi.png" alt="Cleobi"></span>
+          <span class="partner-logo"><img src="pushloop_logo.png" alt="Pushloop"></span>
+        </div>
       </div>
     </div>
   </section>

@@ -305,45 +305,72 @@
     }
 
     /* ── Social proof bar ────────────────────────────── */
-    .proof-bar {
-      padding: 48px 0;
+    /* ── Value Pillars ──────────────────────────────── */
+    .value-pillars {
+      padding: 80px 0 64px;
       border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
     }
 
-    .proof-bar .container {
+    .value-pillars .section-title {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .value-pillars .section-label {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .pillar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 36px 32px;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .pillar-card:hover {
+      border-color: rgba(255, 107, 61, 0.2);
+      box-shadow: 0 8px 32px rgba(255, 107, 61, 0.06);
+    }
+
+    .pillar-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: var(--accent-glow);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
+      margin-bottom: 20px;
     }
 
-    .proof-stat {
-      text-align: center;
+    .pillar-card:nth-child(2) .pillar-icon {
+      background: var(--teal-glow);
     }
 
-    .proof-stat .number {
+    .pillar-card:nth-child(3) .pillar-icon {
+      background: linear-gradient(135deg, var(--accent-glow), var(--teal-glow));
+    }
+
+    .pillar-card h3 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.2rem;
+      font-size: 1.25rem;
       font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
     }
 
-    .proof-stat .number .accent { color: var(--accent); }
-    .proof-stat .number .teal { color: var(--teal); }
-
-    .proof-stat .label {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    .proof-divider {
-      width: 1px;
-      height: 48px;
-      background: var(--border-subtle);
+    .pillar-card p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
     }
 
     /* ── Partner ────────────────────────────────────── */
@@ -915,9 +942,7 @@
       .diff-grid { grid-template-columns: 1fr; }
       .compare-table { grid-template-columns: 1fr; }
 
-      .proof-bar .container { gap: 32px; }
-      .proof-divider { display: none; }
-      .proof-stat .number { font-size: 1.8rem; }
+      .pillars-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
 
       .cta-box { padding: 56px 24px; }
 
@@ -1050,30 +1075,47 @@
     </div>
   </section>
 
-  <!-- ── Social proof ───────────────────────────────── -->
-  <div class="proof-bar">
+  <!-- ── Value Pillars ───────────────────────────────── -->
+  <section class="value-pillars">
     <div class="container">
-      <div class="proof-stat fade-up">
-        <div class="number"><span class="accent">47.9</span>%</div>
-        <div class="label">Tasso di accettazione</div>
-      </div>
-      <div class="proof-divider"></div>
-      <div class="proof-stat fade-up">
-        <div class="number"><span class="teal">34.9</span>%</div>
-        <div class="label">Tasso di risposta</div>
-      </div>
-      <div class="proof-divider"></div>
-      <div class="proof-stat fade-up">
-        <div class="number"><span class="accent">301</span></div>
-        <div class="label">Connessioni create</div>
-      </div>
-      <div class="proof-divider"></div>
-      <div class="proof-stat fade-up">
-        <div class="number"><span class="teal">105</span></div>
-        <div class="label">Conversazioni avviate</div>
+      <div class="section-label fade-up">Come ti aiutiamo</div>
+      <h2 class="section-title fade-up">Tre leve per accelerare<br>la tua crescita commerciale.</h2>
+      <div class="pillars-grid">
+        <div class="pillar-card fade-up">
+          <div class="pillar-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 28V18h6v10H4zM13 28V12h6v16h-6zM22 28V4h6v24h-6z" stroke="#ff6b3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(255,107,61,0.1)"/>
+            </svg>
+          </div>
+          <h3>Sales Pipeline</h3>
+          <p>Incrementare il volume delle opportunita commerciali qualificate, alimentando costantemente la tua pipeline con prospect ad alto potenziale.</p>
+        </div>
+        <div class="pillar-card fade-up">
+          <div class="pillar-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="11" stroke="#00b88a" stroke-width="1.8" fill="rgba(0,184,138,0.08)"/>
+              <path d="M16 5v11l7.5 4.5" stroke="#00b88a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 4l-3 3M24 4l3 3" stroke="#00b88a" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Sales Capacity</h3>
+          <p>Aumentare i canali, settori o mercati raggiunti senza dover ampliare il reparto commerciale interno, scalando la capacita di vendita in modo sostenibile.</p>
+        </div>
+        <div class="pillar-card fade-up">
+          <div class="pillar-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 26L26 6" stroke="#ff6b3d" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M20 6h6v6" stroke="#ff6b3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="10" cy="22" r="4" stroke="#00b88a" stroke-width="1.5" fill="rgba(0,184,138,0.08)"/>
+              <path d="M8.5 22l1 1 2.5-2.5" stroke="#00b88a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Sales Cycle</h3>
+          <p>Accelerare il processo di conversione, riducendo i tempi dal primo contatto alla chiusura e trasformando piu velocemente le conversazioni in contratti firmati.</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- ── Partner ──────────────────────────────────── -->
   <section class="partners-section">

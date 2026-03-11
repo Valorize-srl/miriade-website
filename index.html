@@ -493,88 +493,117 @@
     /* ── Come funziona ───────────────────────────────── */
     .how-section {
       padding: 120px 0;
-      background: linear-gradient(180deg, var(--bg-primary) 0%, #f0f0f5 50%, var(--bg-primary) 100%);
     }
 
     .how-section .section-label { color: var(--teal); }
 
-    .steps {
+    .how-panel {
+      background: #f0f0f5;
+      border-radius: 24px;
+      padding: 56px;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      counter-reset: step;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
     }
 
-    .step {
-      position: relative;
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 36px 28px;
-      counter-increment: step;
-      transition: border-color 0.3s, transform 0.3s;
+    .how-panel-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
     }
 
-    .step:hover {
-      border-color: rgba(0, 184, 138, 0.25);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-    }
-
-    .step::before {
-      content: counter(step, decimal-leading-zero);
+    .how-panel-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 3rem;
+      font-size: 1.6rem;
       font-weight: 700;
-      color: rgba(0, 0, 0, 0.04);
-      position: absolute;
-      top: 16px;
-      right: 20px;
-      line-height: 1;
+      letter-spacing: -0.02em;
+      text-align: center;
     }
 
-    .step-icon {
-      width: 44px;
-      height: 44px;
+    .how-flow {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .how-flow-icon {
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+    }
+
+    .how-flow-arrow {
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .how-flow-box {
+      border: 1.5px dashed rgba(0, 0, 0, 0.12);
+      border-radius: 14px;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .how-flow-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .how-flow-item svg {
+      flex-shrink: 0;
+      opacity: 0.5;
+    }
+
+    .how-panel-right {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .step-pill {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+
+    .step-pill:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .step-pill-icon {
+      width: 40px;
+      height: 40px;
       border-radius: 10px;
       background: var(--teal-glow);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
-      color: var(--teal);
-      font-size: 1.2rem;
+      flex-shrink: 0;
     }
 
-    .step h3 {
-      font-size: 1.05rem;
+    .step-pill h3 {
+      font-size: 0.95rem;
       font-weight: 600;
-      margin-bottom: 10px;
+      margin: 0;
     }
-
-    .step p {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    /* ── Connector line between steps (desktop) */
-    .steps-connector {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-bottom: -16px;
-      padding: 0 28px;
-    }
-
-    .connector-segment {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding-right: 0;
-    }
-
-    .connector-segment:last-child { display: none; }
 
     /* ── Differenziatori ─────────────────────────────── */
     .diff-section {
@@ -914,7 +943,6 @@
     /* ── Responsive ──────────────────────────────────── */
     @media (max-width: 1024px) {
       .hero-visual { flex: 0 0 360px; }
-      .steps { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 768px) {
@@ -940,7 +968,8 @@
       .hero-visual { flex: 0 0 auto; max-width: 400px; width: 100%; }
 
       .problem-grid { grid-template-columns: 1fr; }
-      .steps { grid-template-columns: 1fr; }
+      .how-panel { grid-template-columns: 1fr; padding: 32px 24px; }
+      .how-flow { flex-wrap: wrap; justify-content: center; }
       .diff-grid { grid-template-columns: 1fr; }
       .compare-table { grid-template-columns: 1fr; }
 
@@ -1192,60 +1221,72 @@
       <div class="section-label fade-up">Il metodo</div>
       <h2 class="section-title fade-up">Un processo strutturato<br>in 4 fasi.</h2>
       <p class="section-sub fade-up">Gestiamo l'intero ciclo di prospecting: dall'identificazione dei target alla pianificazione degli appuntamenti qualificati.</p>
-      <div class="steps">
-        <div class="step fade-up">
-          <div class="step-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="10" r="4" stroke="#00d4a1" stroke-width="1.8"/>
-              <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="#00d4a1" stroke-width="1.8" stroke-linecap="round"/>
-              <circle cx="12" cy="10" r="1.5" fill="#00d4a1" opacity="0.3"/>
-              <path d="M19 4l2 2-2 2" stroke="#00d4a1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+      <div class="how-panel fade-up">
+        <!-- Left: flow diagram -->
+        <div class="how-panel-left">
+          <div class="how-panel-title">AI-powered Prospecting</div>
+          <div class="how-flow">
+            <svg class="how-flow-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M40 8c-6 10-24 14-24 32s18 22 24 32c6-10 24-14 24-32S46 18 40 8z" fill="none" stroke="var(--text-primary)" stroke-width="2"/>
+              <path d="M40 14c-4 8-18 11-18 26s14 18 18 26c4-8 18-11 18-26S44 22 40 14z" fill="none" stroke="var(--text-primary)" stroke-width="1.5" opacity="0.6"/>
+              <path d="M40 20c-3 6-12 9-12 20s9 14 12 20c3-6 12-9 12-20S43 26 40 20z" fill="none" stroke="var(--text-primary)" stroke-width="1.2" opacity="0.35"/>
+              <path d="M40 26c-2 4-7 6-7 14s5 10 7 14c2-4 7-6 7-14S42 30 40 26z" fill="none" stroke="var(--text-primary)" stroke-width="1" opacity="0.2"/>
             </svg>
+            <span class="how-flow-arrow">&rarr;</span>
+            <div class="how-flow-box">
+              <div class="how-flow-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="1.5"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>
+                Data Enrichment
+              </div>
+              <div class="how-flow-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="1.5"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>
+                AI Agents
+              </div>
+            </div>
+            <span class="how-flow-arrow">&rarr;</span>
           </div>
-          <h3>Analisi del profilo cliente ideale</h3>
-          <p>Definiamo insieme l'ICP: settore, dimensione aziendale, ruoli decisionali e criteri di qualificazione per massimizzare la rilevanza dei contatti.</p>
         </div>
-        <div class="step fade-up">
-          <div class="step-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="8" cy="8" r="3" stroke="#00d4a1" stroke-width="1.5" opacity="0.5"/>
-              <circle cx="16" cy="8" r="3" stroke="#00d4a1" stroke-width="1.5" opacity="0.5"/>
-              <circle cx="12" cy="16" r="3" stroke="#00d4a1" stroke-width="1.5"/>
-              <circle cx="12" cy="16" r="1.2" fill="#00d4a1" opacity="0.3"/>
-              <path d="M10 9l-1 5M14 9l1 5" stroke="#00d4a1" stroke-width="1" stroke-dasharray="2 2" opacity="0.4"/>
-              <path d="M9 16h-4M15 16h4" stroke="#00d4a1" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
-            </svg>
+        <!-- Right: step pills -->
+        <div class="how-panel-right">
+          <div class="step-pill">
+            <div class="step-pill-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="10" r="4" stroke="#00d4a1" stroke-width="1.8"/>
+                <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="#00d4a1" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Analisi del profilo cliente ideale</h3>
           </div>
-          <h3>Costruzione del database prospect</h3>
-          <p>Generiamo liste di contatti verificati, selezionati sulla base dell'ICP definito e di segnali di interesse concreti (intent data, trigger events).</p>
-        </div>
-        <div class="step fade-up">
-          <div class="step-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="2" y="5" width="14" height="10" rx="2" stroke="#00d4a1" stroke-width="1.5"/>
-              <path d="M2 7l7 4 7-4" stroke="#00d4a1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <rect x="14" y="3" width="8" height="8" rx="4" fill="rgba(0,212,161,0.15)" stroke="#00d4a1" stroke-width="1.2"/>
-              <path d="M16.5 7l1.2 1.2 2.4-2.4" stroke="#00d4a1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M6 19l3-4M12 19l-3-4" stroke="#00d4a1" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
-              <rect x="4" y="19" width="10" height="2" rx="1" fill="#00d4a1" opacity="0.15"/>
-            </svg>
+          <div class="step-pill">
+            <div class="step-pill-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="8" cy="8" r="3" stroke="#00d4a1" stroke-width="1.5" opacity="0.5"/>
+                <circle cx="16" cy="8" r="3" stroke="#00d4a1" stroke-width="1.5" opacity="0.5"/>
+                <circle cx="12" cy="16" r="3" stroke="#00d4a1" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3>Costruzione del database prospect</h3>
           </div>
-          <h3>Outreach multicanale automatizzato</h3>
-          <p>Attiviamo sequenze personalizzate su email e LinkedIn. L'AI gestisce le risposte e qualifica le conversazioni in modo autonomo.</p>
-        </div>
-        <div class="step fade-up">
-          <div class="step-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="3" y="4" width="18" height="18" rx="3" stroke="#00d4a1" stroke-width="1.5"/>
-              <line x1="3" y1="10" x2="21" y2="10" stroke="#00d4a1" stroke-width="1.5"/>
-              <line x1="8" y1="2" x2="8" y2="6" stroke="#00d4a1" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="16" y1="2" x2="16" y2="6" stroke="#00d4a1" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="12" cy="16" r="3.5" fill="rgba(0,212,161,0.15)" stroke="#00d4a1" stroke-width="1.2"/>
-              <path d="M10.5 16l1 1 2.5-2.5" stroke="#00d4a1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+          <div class="step-pill">
+            <div class="step-pill-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="5" width="14" height="10" rx="2" stroke="#00d4a1" stroke-width="1.5"/>
+                <path d="M2 7l7 4 7-4" stroke="#00d4a1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Outreach multicanale automatizzato</h3>
           </div>
-          <h3>Appuntamenti qualificati in agenda</h3>
-          <p>I prospect interessati vengono convertiti in appuntamenti pianificati direttamente nel calendario del team commerciale.</p>
+          <div class="step-pill">
+            <div class="step-pill-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="4" width="18" height="18" rx="3" stroke="#00d4a1" stroke-width="1.5"/>
+                <line x1="3" y1="10" x2="21" y2="10" stroke="#00d4a1" stroke-width="1.5"/>
+                <circle cx="12" cy="16" r="3.5" fill="rgba(0,212,161,0.15)" stroke="#00d4a1" stroke-width="1.2"/>
+                <path d="M10.5 16l1 1 2.5-2.5" stroke="#00d4a1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Appuntamenti qualificati in agenda</h3>
+          </div>
         </div>
       </div>
     </div>

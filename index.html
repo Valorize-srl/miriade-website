@@ -755,6 +755,72 @@
     .compare-col.old .compare-list li { color: var(--text-muted); }
     .compare-col.new .compare-list li { color: var(--text-primary); }
 
+    /* ── FAQ ─────────────────────────────────────────── */
+    .faq-section {
+      padding: 120px 0;
+      background: var(--bg-primary);
+    }
+
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .faq-item:hover {
+      border-color: var(--accent);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: left;
+      gap: 16px;
+    }
+
+    .faq-question svg {
+      flex-shrink: 0;
+      transition: transform 0.3s;
+      color: var(--text-muted);
+    }
+
+    .faq-item.open .faq-question svg {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 28px 22px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
     /* ── CTA finale ──────────────────────────────────── */
     .cta-section {
       padding: 120px 0;
@@ -806,45 +872,98 @@
 
     /* ── Footer ──────────────────────────────────────── */
     .footer {
-      padding: 48px 0;
+      padding: 64px 0 32px;
       border-top: 1px solid var(--border-subtle);
+      background: var(--bg-primary);
     }
 
-    .footer .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
     }
 
-    .footer-left {
-      display: flex;
-      align-items: center;
-      gap: 24px;
+    .footer-brand .logo {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      display: inline-block;
     }
 
-    .footer .logo { font-size: 1.2rem; }
-
-    .footer-copy {
-      font-size: 0.82rem;
+    .footer-brand p {
+      font-size: 0.88rem;
       color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 300px;
     }
 
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-    }
-
-    .footer-links a {
+    .footer-col h4 {
       font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col a {
+      font-size: 0.88rem;
       color: var(--text-muted);
       text-decoration: none;
       transition: color 0.2s;
     }
 
-    .footer-links a:hover { color: var(--text-secondary); }
+    .footer-col a:hover { color: var(--accent); }
+
+    .footer-col p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom span {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom a {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-bottom a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
     /* ── Animations ──────────────────────────────────── */
     .fade-up {
@@ -942,8 +1061,8 @@
       <a href="#" class="logo">miriade<span>.</span></a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#problema">La sfida</a></li>
-        <li><a href="#come-funziona">Il metodo</a></li>
-        <li><a href="#perche">Vantaggi</a></li>
+        <li><a href="#metodo">Il metodo</a></li>
+        <li><a href="#vantaggi">Vantaggi</a></li>
         <li><a href="https://calendar.app.google/etNbMv2XhsLynsjL8" class="btn-nav" target="_blank" rel="noopener">Richiedi una consulenza</a></li>
       </ul>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
@@ -969,7 +1088,7 @@
             Prenota una chiamata
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
           </a>
-          <a href="#come-funziona" class="btn-secondary">Scopri come funziona</a>
+          <a href="#metodo" class="btn-secondary">Scopri come funziona</a>
         </div>
       </div>
       <div class="hero-visual fade-up">
@@ -1049,7 +1168,7 @@
   </section>
 
   <!-- ── Value Pillars ───────────────────────────────── -->
-  <section class="value-pillars">
+  <section class="value-pillars" id="come-aiutiamo">
     <div class="container">
       <div class="section-label fade-up">Come ti aiutiamo</div>
       <h2 class="section-title fade-up">Ti aiutiamo a vendere di più,<br>meglio e più in fretta.</h2>
@@ -1162,7 +1281,7 @@
   </section>
 
   <!-- ── Come funziona ──────────────────────────────── -->
-  <section class="how-section" id="come-funziona">
+  <section class="how-section" id="metodo">
     <div class="container">
       <div class="section-label fade-up">Il metodo</div>
       <h2 class="section-title fade-up">Un processo strutturato<br>in 4 fasi.</h2>
@@ -1231,7 +1350,7 @@
   </section>
 
   <!-- ── Perche Miriade ──────────────────────────────── -->
-  <section class="diff-section" id="perche">
+  <section class="diff-section" id="vantaggi">
     <div class="container">
       <div class="section-label fade-up">Vantaggi</div>
       <h2 class="section-title fade-up">Un servizio, non un software.<br>Risultati, non strumenti.</h2>
@@ -1297,6 +1416,58 @@
     </div>
   </section>
 
+  <!-- ── FAQ ──────────────────────────────────────────── -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-label fade-up" style="text-align:center;">FAQ</div>
+      <h2 class="section-title fade-up" style="text-align:center; margin-left:auto; margin-right:auto;">Domande frequenti</h2>
+      <div class="faq-list">
+        <div class="faq-item fade-up">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open'); const a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+            Quanto tempo serve per vedere i primi risultati?
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Le prime conversazioni qualificate arrivano generalmente entro 2-3 settimane dall'avvio della campagna. I risultati migliorano nel tempo grazie all'ottimizzazione continua dei messaggi e del targeting.</div></div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open'); const a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+            Devo avere un profilo LinkedIn aziendale attivo?
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Si, utilizziamo il profilo LinkedIn del founder o di un referente commerciale dell'azienda. Ti aiutiamo anche ad ottimizzarlo per massimizzare il tasso di accettazione e la credibilita professionale.</div></div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open'); const a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+            Come funziona il targeting dei contatti?
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Definiamo insieme il profilo del cliente ideale (ICP) in base a settore, ruolo, dimensione aziendale e area geografica. Utilizziamo strumenti avanzati di scraping e AI per costruire liste altamente profilate.</div></div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open'); const a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+            Qual e il costo del servizio?
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Offriamo piani flessibili in base al volume di contatti e ai canali utilizzati. Richiedi una consulenza gratuita per ricevere un preventivo personalizzato in base alle esigenze della tua azienda.</div></div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open'); const a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+            Il mio account LinkedIn rischia penalizzazioni?
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">No. Rispettiamo scrupolosamente i limiti giornalieri di LinkedIn e utilizziamo tecniche di warm-up progressivo. Le attivita simulano un comportamento naturale per proteggere il tuo profilo.</div></div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open'); const a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+            Posso integrare Miriade con il mio CRM?
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Si, supportiamo l'integrazione con i principali CRM (HubSpot, Salesforce, Pipedrive e altri) per sincronizzare automaticamente i lead qualificati e le conversazioni generate.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── CTA ─────────────────────────────────────────── -->
   <section class="cta-section" id="contatti">
     <div class="container">
@@ -1314,14 +1485,41 @@
   <!-- ── Footer ──────────────────────────────────────── -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-left">
-        <a href="#" class="logo">miriade<span>.</span></a>
-        <span class="footer-copy">Lead generation B2B potenziata dall'AI — Powered by Intraprendenza Srl</span>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">miriade<span>.</span></a>
+          <p>Lead generation B2B potenziata dall'AI. Un servizio di Intraprendenza Srl.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Sezioni</h4>
+          <ul>
+            <li><a href="#come-aiutiamo">Come ti aiutiamo</a></li>
+            <li><a href="#metodo">Il metodo</a></li>
+            <li><a href="#vantaggi">Vantaggi</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contatti">Contatti</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Intraprendenza Srl</h4>
+          <p>
+            Via Example 10, 20100 Milano (MI)<br>
+            P.IVA: 00000000000<br>
+            REA: MI - 0000000
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Contatti</h4>
+          <ul>
+            <li><a href="mailto:info@miriade.co">info@miriade.co</a></li>
+            <li><a href="https://calendar.app.google/etNbMv2XhsLynsjL8" target="_blank" rel="noopener">Prenota una call</a></li>
+          </ul>
+        </div>
       </div>
-      <ul class="footer-links">
-        <li><a href="https://calendar.app.google/etNbMv2XhsLynsjL8" target="_blank" rel="noopener">Contatti</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-      </ul>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Miriade — Intraprendenza Srl. Tutti i diritti riservati.</span>
+        <a href="#">Privacy Policy</a>
+      </div>
     </div>
   </footer>
 
